@@ -4,7 +4,7 @@ draw = {
 	ex : x+800-480,					// end x
 	ey : y+38					// end y
 }
-
+changed=false
 curt = {
 	cu : 0,						// current
 	li : noone,					// list
@@ -29,9 +29,18 @@ options=["Ace of Spades", "2 of Spades", "3 of Spades", "4 of Spades", "5 of Spa
 title = "Card"
 curt.li = options
 
+
+onChange = function(e){
+
+}
+
+
 function selected(i){
 	with (curt.pf) {
 		curt.cu = i;
 		curt.dd = false;
+		changed=true
 	}
+	//show_message(self)
+	
 }

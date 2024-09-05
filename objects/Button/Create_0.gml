@@ -1,5 +1,5 @@
 onClick = function(){}
-
+shown =true
 text = "<Button>"
 
-image_blend=make_color_rgb(150,255,123)
+image_blend=c_green

@@ -1,9 +1,7 @@
 //wiw be populatied on creation
 deck = undefined;
-
-function reset_deck()
-{
-deck = [
+function get_clean_deck(){
+return [
     { name: "Ace of Spades", value: 11 },
     { name: "2 of Spades", value: 2 },
     { name: "3 of Spades", value: 3 },
@@ -61,18 +59,28 @@ deck = [
     { name: "King of Clubs", value: 10 }
 ];	
 }
+function reset_deck()
+{
+deck = get_clean_deck();	
+}
 reset_deck();
 
+function pull_card_index(index){
+	var _card = deck[index]
+	array_delete(deck,index,1);
+	return _card;
+}
 function pull_card()
 {
 	randomize()
-	var _len = array_length(deck);
+	var _len = array_length(deck)-1;
 	var _index = round(random_range(0,_len));
-	var _card = deck[_index]
-	array_delete(deck,_index,1);
-	return _card;
+	return pull_card_index(_index);
 }
+
+
+
 function toString()
 {
-return string(array_map(deck,function(card){return card.name}))	
+return string(array_map(deck,function(card){return string_char_at(card.name,1)}))	
 }
