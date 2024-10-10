@@ -33,14 +33,3 @@ curt.li = options
 onChange = function(e){
 
 }
-
-
-function selected(i){
-	with (curt.pf) {
-		curt.cu = i;
-		curt.dd = false;
-		changed=true
-	}
-	//show_message(self)
-	
-}

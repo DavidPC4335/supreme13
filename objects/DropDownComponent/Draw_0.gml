@@ -1,4 +1,7 @@
 
+
+if(shown){
+
 var sx = draw.sx,
 	sy = draw.sy,
 	ex = draw.ex,
@@ -25,3 +28,4 @@ var sx = draw.sx,
 	draw_line(ex - 13, sy + 16, ex - 20, sy + 23);
 
 #endregion
+}

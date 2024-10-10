@@ -62,7 +62,7 @@ function get_blind_bet_multiplier(){
 		}
 	}
 	
-	
+	//show_message("mult:"+string(_mult)+toString())
 	return _mult;
 }
 

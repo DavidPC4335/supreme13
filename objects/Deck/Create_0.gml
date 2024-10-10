@@ -68,13 +68,16 @@ reset_deck();
 function pull_card_index(index){
 	var _card = deck[index]
 	array_delete(deck,index,1);
+	//show_message(_card.name)
 	return _card;
 }
 function pull_card()
 {
-	randomize()
+	//random_set_seed(get_timer())
+
 	var _len = array_length(deck)-1;
-	var _index = round(random_range(0,_len));
+	var _index = irandom_range(0,_len);
+	
 	return pull_card_index(_index);
 }
 

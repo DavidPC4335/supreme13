@@ -53,3 +53,13 @@ function dropdown_set_style(i, f, t, b, h, p = 10, r = -1) {
 	}
 
 }
+
+function dropdown_selected(i) {
+
+	with (curt.pf) {
+		curt.cu = i;
+		curt.dd = false;
+		onChange(i)
+	}
+
+}

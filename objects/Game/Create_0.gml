@@ -8,8 +8,9 @@ enum GAMERESULT
 
 
 deck = instance_create_depth(0,0,0,Deck);
-
+//changed by external objects
 player_first_card_index =-1;
+dealer_first_card_index = -1;
 
 hands = [instance_create_depth(0,0,0,Hand)
 ,instance_create_depth(0,0,0,Hand)]
@@ -28,10 +29,12 @@ for(var i=0;i<array_length(hands);i++){
 
 function play_hand(){
 	array_foreach(hands,function(hand,index){
-		if(index > 0 && player_first_card_index >=0){
-			hand.pull_card_index(deck,player_first_card_index);
+		var pullIndex = (index == 0 ? dealer_first_card_index : player_first_card_index)
+		//show_message(string(pullIndex)+string(index)+string(dealer_first_card_index))
+		if(pullIndex >= 0){
+			hand.pull_card_index(deck,pullIndex);
 		}else{
-		hand.pull_card(deck)
+			hand.pull_card(deck)
 		}
 	})	
 	
@@ -42,8 +45,10 @@ function play_hand(){
 	})	
 	//optional third card for dealer
 	if(hands[0].get_sum() < 8){
+		//show_message("Dealer pull card"+hands[0].toString())
 		hands[0].pull_card(deck)	
 	}
+	
 	//returns the results
 	var _dealer_score = hands[0].get_score()
 	var _result=[]
@@ -54,10 +59,12 @@ function play_hand(){
 		var _dealer_bust = _dealer_score > 5
 		var _res ={}
 		//bust logic
-		if(_dealer_bust){
-			_res.result = GAMERESULT.WIN
-		}else if (_player_bust){
+		if( _player_bust){
 			_res.result = GAMERESULT.LOSE
+			
+		}
+		else if (_dealer_bust){
+			_res.result = GAMERESULT.WIN
 		}else{
 		
 			//if dealer wins
@@ -69,6 +76,7 @@ function play_hand(){
 				_res.result = GAMERESULT.WIN
 			}else{
 				//TIE
+				//show_message("Tie"+string(_dealer_score)+","+string(_player_score))
 				_res.result = GAMERESULT.TIE
 			}
 		}
@@ -90,10 +98,10 @@ function get_bet_muitiplier(result,hand){
 	
 	switch(result){
 		case GAMERESULT.WIN:
-			_mult+=2
+			_mult+=3
 		break;
 		case GAMERESULT.TIE:
-			_mult+=1
+			_mult+=2
 		break;
 		
 	}

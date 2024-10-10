@@ -11,7 +11,7 @@ var create_dd = function() {
 	var cu = curt.cu,
 		cx = draw.sx + 161,
 		cy = draw.ey + 1;
-	curt.dd = dropdown_create(cx, cy, 160, 160, options, selected, [cu], cu, 38);
+	curt.dd = dropdown_create(cx, cy, 160, 160, options, dropdown_selected, [cu], cu, 38);
 	dropdown_set_style(curt.dd, ui_font, $ffffff, $333333, $444444, 10, $aaaaaa);
 }
 

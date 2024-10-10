@@ -6,3 +6,5 @@ length=400;
 height=30
 bw=5//borderWidth
 shown=true
+animation=instance_create_depth(x+(length/2),y-200,depth,Animation)
+animation.sprite_index = sShuffleAnimation;
